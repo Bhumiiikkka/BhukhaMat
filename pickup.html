@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f5f5f5;
+}
+
+.container {
+    max-width: 390px;
+    margin: auto;
+    background: white;
+    min-height: 100vh;
+    padding: 15px;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,120,0,0.30), transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(255,60,0,0.25), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,180,0,0.20), transparent 40%),
+      linear-gradient(180deg, #ffe9db 0%, #ffd8c2 100%);
+  
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card {
+    background: #fff3e6;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ff6b00;
+    color: white;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚚 Pickup Orders</h2>
+
+<div class="card">
+    <b>Biryani</b><br>
+    Pune • 5 plates<br><br>
+    <button class="button" onclick="startPickup()">Start Pickup</button>
+</div>
+
+</div>
+
+<script>
+function startPickup() {
+    window.location.href = "track.html";
+}
+marker.bindPopup("🎉 Donation Delivered!").openPopup();
+
+// AUTO REDIRECT AFTER 2 SECONDS
+setTimeout(() => {
+    window.location.href = "success.html";
+}, 2000);
+</script>
+
+</body>
+</html>

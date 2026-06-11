@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BhukhaMat Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-wrapper">
+
+        <div class="top-shape"></div>
+
+        <div class="login-card">
+
+            <h2 class="welcome">Welcome to BhukhaMat</h2>
+            <p class="subtitle">Join the movement to end food waste</p>
+
+            <div class="role-selection">
+                <div class="role-box" onclick="selectRole(this)">Donor</div>
+                <div class="role-box" onclick="selectRole(this)">NGO</div>
+                <div class="role-box" onclick="selectRole(this)">Rider</div>
+            </div>
+
+            <input type="email" id="email" placeholder="Email" >
+            <input type="password" id="password" placeholder="Password">
+
+            <p id="login-error" style="color:red; font-size:12px;"></p>
+
+            <button class="login-btn" onclick="login()">Login</button>
+
+            <p class="signup-text">
+                Don't have an account?
+                <a href="signup.html"> Sign Up</a>
+            </p>
+
+        </div>
+    </div>
+    <script>
+        let selectedRole = "";
+        
+        // when user clicks role
+        function selectRole(element){
+        
+            // remove active from all
+            let boxes = document.querySelectorAll(".role-box");
+            boxes.forEach(b => b.style.background = "#eee");
+        
+            // highlight selected
+            element.style.background = "#ff7a00";
+        
+            // save role
+            selectedRole = element.innerText.toLowerCase();
+        
+            console.log("Selected:", selectedRole);
+        }
+        </script>
+        <script>
+            function login(){
+            
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+            
+                let savedEmail = localStorage.getItem("email");
+                let savedPassword = localStorage.getItem("password");
+            
+                if(!selectedRole){
+                    alert("Please select role ❌");
+                    return;
+                }
+            
+                if(email === savedEmail && password === savedPassword){
+            
+                    alert("Login successful ✅");
+            
+                    if(selectedRole === "donor"){
+                        window.location.href = "donor-home.html";
+                    }
+                    else if(selectedRole === "ngo"){
+                        window.location.href = "ngo_dashboard.html";
+                    }
+                    else if(selectedRole === "rider"){
+                        window.location.href = "rider.html";
+                    }
+            
+                } else {
+                    alert("Invalid credentials ❌");
+                }
+            }
+            </script>
+    </body>
+</html>

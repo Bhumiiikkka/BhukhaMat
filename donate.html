@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate Food</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="donate.css">
+</head>
+<body>
+
+<div class="mobile-container">
+
+    <!-- Header -->
+    <div class="header">
+        <span onclick="history.back()">←</span>
+        <h3>Donate Food</h3>
+    </div>
+
+    <!-- Form Card -->
+    <div class="form-card">
+        <form>
+
+            <!-- Upload -->
+            <label class="upload-box">
+                📷 Upload Food Image
+                <input type="file" id="image" required>
+            </label>
+
+            <!-- Food Title -->
+            <div class="input-group">
+                <label>Food Title</label>
+                <input type="text" placeholder="e.g. Dal Rice">
+            </div>
+
+            <!-- Servings -->
+            <div class="input-group">
+                <label>Servings</label>
+                <input type="number" placeholder="Number of servings">
+            </div>
+
+            <!-- Pickup Location -->
+            <div class="input-group">
+                <label>Pickup Location</label>
+                <input type="text" placeholder="Enter location">
+            </div>
+
+            <!-- Pickup Time -->
+            <div class="input-group">
+                <label>Pickup Time</label>
+                <input type="time">
+            </div>
+
+            <!-- Description -->
+            <div class="input-group">
+                <label>Description</label>
+                <textarea placeholder="Write details about food"></textarea>
+            </div>
+
+            <!-- Urgent Toggle -->
+            <div class="toggle-row">
+                <label>Mark as Urgent</label>
+                <input type="checkbox" id="is_urgent">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">
+                Donate Now
+            </button>
+
+        </form>
+    </div>
+
+</div>
+<script>
+    function donate(){
+    
+        let donation = {
+            title: document.getElementById("title").value,
+            servings: document.getElementById("servings").value,
+            location: document.getElementById("location").value,
+            time: document.getElementById("time").value,
+            desc: document.getElementById("desc").value,
+            urgent: document.getElementById("urgent").checked
+        };
+    
+        let all = JSON.parse(localStorage.getItem("donations")) || [];
+        all.push(donation);
+    
+        localStorage.setItem("donations", JSON.stringify(all));
+    
+        alert("Donation successful ✅");
+    
+        window.location.href = "donor-home.html";
+    }
+    </script>
+</body>
+</html>

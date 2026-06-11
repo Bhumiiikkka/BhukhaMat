@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}    
+    .mobile-container {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    
+        background: #f4d1b3;
+    
+        border-radius: 20px;      /* remove round corners */
+    
+        position: relative;
+        padding-bottom: 80px ;
+                 
+background:
+  radial-gradient(circle at 15% 10%, rgba(255,120,0,0.30), transparent 40%),
+  radial-gradient(circle at 85% 25%, rgba(255,60,0,0.25), transparent 40%),
+  radial-gradient(circle at 50% 90%, rgba(255,180,0,0.20), transparent 40%),
+  linear-gradient(180deg, #ffe9db 0%, #ffd8c2 100%);
+
+box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+  
+    h2{
+    margin-bottom:20px;
+    }
+    
+    .subtitle{
+    color:#666;
+    margin-bottom:20px;
+    }
+    
+    /* Pickup Cards */
+    
+    .cards{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    }
+    
+    .card{
+    background:white;
+    border-radius:18px;
+    width: 92%;
+    margin: 30px auto;
+    padding: 30px 20px;
+    border-radius: 28px;
+    
+    display:flex;
+    align-items:center;
+    gap:15px;
+    
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    }
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+    }
+    .food{
+    width:65px;
+    height:65px;
+    border-radius:12px;
+    object-fit:cover;
+    }
+    
+    .info h3{
+    margin:0;
+    font-size:17px;
+    }
+    
+    .info p{
+    margin:3px 0;
+    color:#555;
+    }
+    
+    .location{
+    font-size:14px;
+    }
+    
+    /* Start Pickup Button */
+    
+    button{
+    margin-top:6px;
+    background:#ff7a00;
+    border:none;
+    color:white;
+    padding:8px 16px;
+    border-radius:20px;
+    font-weight:600;
+    cursor:pointer;
+    }
+    
+    /* Order Tracking */
+    
+    .status{
+    background:white;
+    margin-top:20px;
+    padding:15px;
+    border-radius:18px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    }
+    
+    .status h3{
+    margin-top:0;
+    }
+    
+    .status p{
+    margin:6px 0;
+    color:#444;
+    }
+    
+    /* Bottom Navigation */
+    
+    .nav{
+    margin-top:20px;
+    background:white;
+    padding:12px;
+    
+    border-radius:20px;
+    text-decoration: none;
+    display:flex;
+    justify-content:space-around;
+    
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    }
+    
+    .nav div{
+    font-size:14px;
+    color:#444;
+    }
+    .top-section {
+        position: relative;
+        padding: 40px 24px 35px 24px;
+    
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    
+        border-radius: 0 0 40px 40px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    
+        box-shadow: 0 10px 30px rgba(255, 140, 0, 0.08);
+    }
+    
+/* Primary */
+.primary-action {
+    width: 90%;
+    margin: 10px auto;
+    padding: 18px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+.primary-action button {
+    width: 100%;
+    padding: 12px;
+    background: #f59e0b;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Secondary */
+.secondary-action {
+    width: 90%;
+    margin: 10px auto;
+    padding: 15px;
+    background: #fff3e0;
+    border-radius: 16px;
+}
+
+.secondary-action button {
+    margin-top: 8px;
+    padding: 8px 14px;
+    border: none;
+    background: #e0e0e0;
+    border-radius: 15px;
+}
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    
+    width:420px;
+    height:65px;
+    
+    background:white;
+    
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    
+    border-top:1px solid #eee;
+    border-radius: 20px 20px 0 0;
+    box-shadow:0 -4px 10px rgba(0,0,0,0.08);
+    }
+.bottom-nav div{
+text-align:center;
+font-size:13px;
+}
+.nav-item {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: #ff7c00;
+    font-weight: 600;
+}
+
+.nav-item span {
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
+}
+.nav-item {
+    flex: 1;
+    text-align: center;
+    color: #777;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-item span {
+    font-size: 20px;
+    display: block;
+}
+
+.nav-item.active {
+    color: #ff8c42;
+    transform: translateY(-4px);
+}
+
+.nav-item.active span {
+    font-size: 22px;
+}
+/* Role selection container */
+.role-selection {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+/* Each role box */
+.role-box {
+    flex: 1;
+    margin: 5px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 10px;
+    background: #f1f1f1;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.role-box:hover {
+    background: #ffe0cc;
+}
+
+/* Selected role */
+.role-box.active {
+    background: #ff7a00;
+    color: white;
+    font-weight: bold;
+}

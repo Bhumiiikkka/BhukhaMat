@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f5f5f5;
+}
+
+.container {
+    max-width: 390px;
+    margin: auto;
+    background: white;
+    min-height: 100vh;
+    border-radius: 25px;
+    padding: 15px;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,120,0,0.30), transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(255,60,0,0.25), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,180,0,0.20), transparent 40%),
+      linear-gradient(180deg, #ffe9db 0%, #ffd8c2 100%);
+  
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* TITLE */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* CARD */
+.card {
+    display: flex;
+    background: #fff3e6;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.details {
+    flex: 1;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.accept {
+    background: #ff6b00;
+    color: white;
+}
+
+.reject {
+    background: #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title">📥 Pickup Requests</div>
+
+<!-- CARD 1 -->
+<div class="card">
+    <img src="images/biryani.jpeg">
+    
+    <div class="details">
+        <b>Biryani</b><br>
+        Pune • 5 plates<br>
+        ⏱️ Fresh • 30 mins<br>
+        📍 2.3 km away
+    </div>
+
+    <div class="buttons">
+        <button class="btn accept" onclick="accept(this)">Accept</button>
+        <button class="btn reject">Reject</button>
+    </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="card">
+    <img src="images/naan-sabji.jpeg">
+    
+    <div class="details">
+        <b>Naan & Sabzi</b><br>
+        Andheri • 10 plates<br>
+        ⏱️ Fresh • 20 mins<br>
+        📍 4 km away
+    </div>
+
+    <div class="buttons">
+        <button class="btn accept" onclick="accept(this)">Accept</button>
+        <button class="btn reject">Reject</button>
+    </div>
+</div>
+
+</div>
+<script>
+function accept(btn) {
+    btn.innerText = "Accepted ✅";
+    btn.style.background = "green";
+
+    setTimeout(() => {
+        window.location.href = "pickup.html";
+    }, 800);
+}
+</script>
+</body>
+</html>

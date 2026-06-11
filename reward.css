@@ -1,0 +1,78 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#fdf6ec;
+    display:flex;
+    justify-content:center;
+}
+
+.mobile-container{
+    width:100%;
+    max-width:390px;
+    min-height:100vh;
+    background:#fdf6ec;
+}
+
+.top-banner{
+    height:120px;
+    background:url('images/reward.jpg');
+    background-size:cover;
+    background-position:center;
+    border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;
+}
+
+
+.main-title{
+    padding:15px 20px 5px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.reward-card{
+    background:white;
+    margin:10px;
+    padding:20px;
+    border-radius:20px;
+}
+
+.subtitle{
+    color:gray;
+    font-size:14px;
+    margin:10px 0;
+}
+
+.points{
+    font-size:32px;
+    margin:5px 0 15px;
+}
+
+.level-box{
+    background:#ffe0b2;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.badges{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.badge{
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:10px;
+}
+
+.redeem-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#f57c00;
+    color:white;
+    font-size:16px;
+}

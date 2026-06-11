@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BhukhaMat Rider</title>
+<link rel="stylesheet" href="rider.css">
+</head>
+
+<body>
+
+<div class="mobile-container">
+
+    <div class="top-section">
+        <h2>Hello, Rider 👋</h2>
+        <p>Pickup requests assigned to you</p>
+    </div>
+
+<!-- CARD 1 -->
+<div class="card">
+<img src="images/biryani.jpeg">
+<div class="card-info">
+<h3>Chicken Biryani</h3>
+<p>8-10 servings</p>
+<p>📍 Andheri • 2.5 km</p>
+<button>Start Pickup</button>
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="card">
+<img src="images/veg-thali.jpeg">
+<div class="card-info">
+<h3>Veg Thali</h3>
+<p>20-30 servings</p>
+<p>📍 Goregaon • 3.5 km</p>
+<button>Start Pickup</button>
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="card">
+ <img src="images/dal-rice.jpeg">
+<div class="card-info">
+<h3>Dal Rice</h3>
+<p>45-50 servings</p>
+<p>📍 Dadar • 1.5 km</p>
+<button>Start Pickup</button>
+</div>
+</div>
+
+<!-- CARD 4 -->
+<div class="card">
+<img src="images/sweets.jpeg">
+<div class="card-info">
+<h3>sweets</h3>
+<p>25 servings</p>
+<p>📍 Bandra • 2 km</p>
+<button>Start Pickup</button>
+</div>
+</div>
+
+</div>
+
+ <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+    <a href="rider-track.html"
+         class="nav-item">
+            <span>🗺️</span>
+            <p>Track</p>
+    </a>
+        <a href="rider-profile.html"
+        class="nav-item">
+            <span>👤</span>
+            <p>Profile</p>
+</a>
+    </div>
+
+</div>
+<div id="list"></div>
+<script>
+    fetch("http://127.0.0.1:8000/rider/tasks")
+    .then(res => res.json())
+    .then(data => {
+    
+        let container = document.getElementById("list");
+        container.innerHTML = "";
+    
+        data.forEach(item => {
+    
+            container.innerHTML += `
+            <div class="card">
+                <h3>${item.food_title}</h3>
+                <p>🍽 Servings: ${item.servings}</p>
+                <p>📍 ${item.pickup_location}</p>
+                <p>⏰ ${item.pickup_time}</p>
+    
+                <button onclick="deliverOrder(${item.id}, this)">
+                    Mark Delivered
+                </button>
+            </div>
+            `;
+    
+        });
+    
+    });
+    </script>
+    <script>
+        function deliverOrder(id, btn) {
+        
+          fetch(`http://127.0.0.1:8000/deliver/${id}`, {
+            method: "POST"
+          })
+          .then(res => res.json())
+          .then(data => {
+            btn.innerText = "Delivered ✅";
+            btn.style.background = "green";
+          });
+        
+        }
+        </script>
+</body>
+</html>

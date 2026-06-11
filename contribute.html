@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contribute</title>
+    <link rel="stylesheet" href="contribute.css">
+</head>
+
+<body>
+
+<div class="mobile-container">
+
+    <!-- TOP IMAGE -->
+    <div class="top-banner">
+    </div>
+<h2 class="main-title">Support an Ngo 💛</h2>
+    <!-- CARD -->
+    <div class="payment-card">
+
+        <p class="subtitle">Select amount</p>
+
+        <div class="amounts">
+            <button onclick="selectAmount(100, this)">₹100</button>
+            <button onclick="selectAmount(200, this)">₹200</button>
+            <button onclick="selectAmount(500, this)">₹500</button>
+        </div>
+
+        <input type="number" id="customAmount" placeholder="Enter custom amount">
+
+        <p class="subtitle">Choose Payment</p>
+
+        <div class="payment-options">
+            <div class="pay-option active" onclick="selectPayment(this)">📱 Google Pay</div>
+            <div class="pay-option" onclick="selectPayment(this)">💳 Card</div>
+            <div class="pay-option" onclick="selectPayment(this)">🏦 Net Banking</div>
+        </div>
+
+        <button class="pay-btn" onclick="payNow()">Pay Now</button>
+        <div id="successScreen" class="success-screen">
+            <div class="success-box">
+                <div class="tick">✔</div>
+                <h2>Payment Successful</h2>
+                <p>Thank you for your contribution 💛</p>
+                <button onclick="goHome()">Back to Home</button>
+            </div>
+        </div>
+        <div id="paymentScreen" class="payment-screen">
+            <div class="payment-box">
+                <h2>Confirm Payment</h2>
+        
+                <p class="pay-amount">₹ <span id="finalAmount">0</span></p>
+        
+                <div class="upi-box">
+                    <p>Pay using UPI</p>
+                    <div class="upi-option active">Google Pay</div>
+                    <div class="upi-option">PhonePe</div>
+                    <div class="upi-option">Paytm</div>
+                </div>
+        
+                <button onclick="completePayment()">Pay ₹<span id="payBtnAmount">0</span></button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+let selectedPayment = "Google Pay";
+
+function selectAmount(amount, el){
+    document.getElementById("customAmount").value = amount;
+
+    document.querySelectorAll(".amounts button").forEach(btn=>{
+        btn.classList.remove("active-amt");
+    });
+
+    el.classList.add("active-amt");
+}
+
+function selectPayment(el){
+    document.querySelectorAll(".pay-option").forEach(p=>{
+        p.classList.remove("active");
+    });
+
+    el.classList.add("active");
+    selectedPayment = el.innerText;
+}
+
+function goToPayment(){
+    let amount = document.getElementById("amountInput").value;
+
+    if(!amount){
+        alert("Enter amount");
+        return;
+    }
+
+    localStorage.setItem("amount", amount);
+    localStorage.setItem("payment", selectedPayment);
+
+    window.location.href = "payment.html";
+}
+function payNow(){
+    document.getElementById("successScreen").style.display = "flex";
+}
+
+function goHome(){
+    window.location.href = "donor-home.html";
+}
+function payNow(){
+    let amount = document.getElementById("customAmount").value;
+
+    if(amount === ""){
+        alert("Please select amount");
+        return;
+    }
+
+    document.getElementById("finalAmount").innerText = amount;
+    document.getElementById("payBtnAmount").innerText = amount;
+
+    document.getElementById("paymentScreen").style.display = "flex";
+}
+function completePayment(){
+    document.getElementById("paymentScreen").style.display = "none";
+    document.getElementById("successScreen").style.display = "flex";
+}
+</script>
+</body>
+</html>

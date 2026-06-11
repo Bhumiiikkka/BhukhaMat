@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BhukhaMat</title>
+    <link rel="stylesheet"  href="splash.css">
+</head>
+<body>
+    <div class="splash-container">
+        <div class="overlay">
+            <h1 class="title">BHUKHAMAT</h1>
+            <p class="tagline">Your leftovers are somenone's lifeline</p>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        document.body.classList.add("fade-out");
+        setTimeout(function(){
+            window.location.href = "login.html";
+        }, 1000);
+    }, 3000);
+    </script>
+</body>
+</html>

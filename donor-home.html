@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donor Home</title>
+<link rel="stylesheet" href="donor-home.css">
+</head>
+<body>
+
+<div class="mobile-container">
+    <div class="top-section">
+        <h2>Hello, Bhumika 👋</h2>
+        <p>Let's reduce food waste</p>
+    </div>
+
+    <!-- Impact Card -->
+    <div class="impact-card">
+
+        <div class="impact-number" id="totalMeals">0</div>
+        <div class="impact-label">Meals Donated</div>
+    
+        <div class="impact-sub">
+            <span>🔥 <span id="totalDonations">0</span> Donations</span>
+            <span>💰 ₹3,700</span>
+        </div>
+    
+    </div>
+    <a href="reward.html" class="rewards-card">
+        <div class="reward-icon">⭐</div>
+        <div>
+            <h3>Rewards</h3>
+            <p>428 Karma Points</p>
+        </div>
+    </a>
+    <!-- Donate Food -->
+    <div class="donate-primary">
+        <a href="donate.html" class="donate-btn">
+            DONATE FOOD NOW
+        </a>
+    </div>
+
+    <!-- Donate Money -->
+    <div class="ngo-support-card">
+        <h3>💛 Support an NGO financially</h3>
+        <p>Even ₹100 can provide meals for 2 children today.</p>
+        <button class="contribute-btn" onclick="window.location.href='contribute.html'">
+            💛 Contribute Now
+            </button>
+        </div>
+
+    <!-- Recent Donations -->
+<div class="section">
+    <h3 class="section-title">Your Recent Donations</h3>
+    
+   <div class="horizontal-scroll">
+    <div class="food-card">
+        <img src="images/biryani.jpeg">
+        <div class="food-info">
+            <h4>Chicken Biryani</h4>
+            <span class="status picked">Picked Up</span>
+        </div> </div>
+
+    <div class="food-card">
+        <img src="images/veg-thali.jpeg">
+        <div class="food-info">
+            <h4>Veg Thali Pack</h4>
+            <span class="status pending">Awaiting NGO</span>
+        </div>
+    </div>
+
+        <div class="food-card">
+            <img src="images/sweets.jpeg">
+            <div class="food-info">
+                <h4>Festival Sweet Boxes</h4>
+                <span class="status picked">Picked Up</span>
+            </div>
+        </div>
+            <div class="food-card">
+                <img src="images/wedding.jpeg">
+                <div class="food-info">
+                  <h4>Wedding Leftover Meals</h4>
+                  <span class="status accepted">NGO Confirmed</span>
+                </div>
+            </div>
+                <div class="food-card">
+                    <img src="images/dal-rice.jpeg">
+                    <div class="food-info">
+                      <h4>Fresh Dal Rice Packs</h4>
+                      <span class="status pending">Awaiting Pickup</span>
+                    </div>
+                  </div>
+                  <div class="food-card">
+                    <img src="images/naan-sabji.jpeg">
+                    <div class="food-info">
+                      <h4>Naan & Sabji Meals</h4>
+                      <span class="status picked">Picked Up</span>
+                    </div>
+                  </div>
+                  <div class="food-card">
+                    <img src="images/birthday.jpeg">
+                    <div class="food-info">
+                      <h4>Birthday Party Food Packs</h4>
+                      <span class="status distributed">Distributed</span>
+                    </div>
+                  </div>
+              </div>
+        </div> 
+
+    <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <span>🏠</span>
+                <p>Home</p>
+            </div>
+            <a href="my-donation.html"
+             class="nav-item">
+                <span>🔍</span>
+                <p>My Donation</p>
+        </a>
+        <a href="donate.html"
+            class="nav-item">
+                <span>➕</span>
+                <p>Donate</p>
+            </a>
+            <a href="donor-profile.html"
+            class="nav-item">
+                <span>👤</span>
+                <p>Profile</p>
+        </a>
+        
+        </div>
+    </div>
+</div>  <!-- mobile-container -->
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+    
+        const header = document.querySelector(".top-section");
+    
+        if (header) {
+            window.addEventListener("scroll", function () {
+                let scrollY = window.scrollY;
+                header.style.transform = "translateY(" + scrollY * 0.15 + "px)";
+            });
+        }
+    
+    });
+    </script>
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+        </script>
+        <!-- Donate Modal -->
+
+<script>
+    async function loadStats() {
+        const response = await fetch("http://127.0.0.1:8000/stats");
+        const data = await response.json();
+    
+        document.getElementById("donationCount").innerText = data.total_donations;
+        document.getElementById("mealCount").innerText = data.total_meals;
+    }
+    
+    async function loadDonations() {
+        const response = await fetch("http://127.0.0.1:8000/donations");
+        const donations = await response.json();
+    
+        const container = document.getElementById("recentDonations");
+        container.innerHTML = "";
+    
+        donations.reverse().forEach(d => {
+            container.innerHTML += `
+                <div style="background:white;padding:10px;margin:10px;border-radius:10px;">
+                    <b>${d.food_title}</b><br>
+                    Servings: ${d.servings}<br>
+                    Location: ${d.pickup_location}
+                </div>
+            `;
+        });
+    }
+    
+    loadStats();
+    loadDonations();
+    </script>
+    <script>
+        async function loadStats() {
+            try {
+                const response = await fetch("/stats");
+                const data = await response.json();
+        
+                document.getElementById("totalMeals").innerText = data.total_meals;
+                document.getElementById("totalDonations").innerText = data.total_donations;
+        
+            } catch (error) {
+                console.error("Error loading stats:", error);
+            }
+        }
+        
+        loadStats();
+        </script>
+</body>
+</html>

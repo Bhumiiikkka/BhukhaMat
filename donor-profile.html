@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #efe6dd;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* PROFILE */
+.profile {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.profile-info h2 {
+    margin: 0;
+}
+
+.profile-info p {
+    margin: 3px 0;
+    color: gray;
+    font-size: 14px;
+}
+
+/* SECTION TITLE */
+.section-title {
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+
+/* IMPACT BOX */
+.impact {
+    display: flex;
+    gap: 10px;
+}
+
+.impact-card {
+    flex: 1;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+.impact-card h2 {
+    margin: 0;
+    color: #ff7a00;
+}
+
+.impact-card p {
+    margin: 5px 0 0;
+    color: gray;
+}
+
+/* MENU ITEMS */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.logout {
+    color: red;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <span onclick="history.back()">←</span>
+        <h3>Donate Food</h3>
+    </div> <div class="header"></div>
+        <span onclick="history.back()">←</span>
+        <h3>Donate Food</h3>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="profile">
+        <img src="images/user.avif">
+        <div class="profile-info">
+            <h2>Bhumika Jadhav</h2>
+            <p>jbhumika740@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div class="section-title">Your Impact</div>
+
+    <div class="impact">
+        <div class="impact-card">
+            <h2>24</h2>
+            <p>Meals Saved</p>
+        </div>
+        <div class="impact-card">
+            <h2>374</h2>
+            <p>Karma Points</p>
+        </div>
+    </div>
+
+    <!-- ACCOUNT SETTINGS -->
+    <div class="section-title">Account Settings</div>
+
+    <div class="menu">
+        <div class="menu-item">👤 Edit Profile</div>
+        <div class="menu-item">📍 Manage Addresses</div>
+        <div class="menu-item">🔔 Notifications</div>
+    </div>
+
+    <!-- MORE -->
+    <div class="section-title">More</div>
+
+    <div class="menu">
+        <div class="menu-item">🛡️ Privacy & Safety</div>
+        <div class="menu-item">❓ Help & Support</div>
+        <div class="menu-item logout">🚪 Logout</div>
+    </div>
+
+</div>
+<script>
+
+    // 🔙 BACK BUTTON
+    function goBack(){
+        window.history.back();
+    }
+    
+    // 🚪 LOGOUT
+    function logout(){
+        // clear fake login data
+        localStorage.removeItem("user");
+    
+        // redirect to login page
+        window.location.href = "login.html";
+    }
+    
+    </script>
+</body>
+</html>

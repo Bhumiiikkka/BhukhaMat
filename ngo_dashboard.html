@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGO Dashboard</title>
+<link rel="stylesheet" href="ngo.css">
+</head>
+<body>
+<div class="mobile-container">
+    <div class="header">
+    <h2>Hello NGO 👋</h2>
+    <p>Available food donations near you</p>
+    </div>
+    <div id="donation-card"></div>
+    <div class="stats">
+    
+    <div class="stat-box">
+    <h3>24</h3>
+    <p>Meals Collected</p>
+    </div>
+    
+    <div class="stat-box">
+    <h3>374</h3>
+    <p>Karma Points</p>
+    </div>
+    
+    </div>
+    <div class="swipe-card">
+        👉 Swipe to Accept
+        <p>Quick matching for urgent food pickup</p>
+        </div>
+    <h3 class="section-title">Available Donations</h3>
+    
+    <!-- Food Card 1 -->
+    
+    <div class="food-card">
+    
+    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+    
+    <div class="food-info">
+    <h4>Mixed Veg Thali</h4>
+    <p>4-5 servings</p>
+    <p>📍 Bandra West • 1.2 km</p>
+    </div>
+    
+    <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+    
+    </div>
+    
+    <!-- Food Card 2 -->
+    
+    <div class="food-card">
+    
+    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+    
+    <div class="food-info">
+    <h4>Chicken Biryani</h4>
+    <p>8-10 servings</p>
+    <p>📍 Andheri • 2.5 km</p>
+    </div>
+    
+    <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+    </div>
+    
+    <!-- Food Card 3 -->
+    
+    <div class="food-card">
+    
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+    
+    <div class="food-info">
+    <h4>Paneer Curry</h4>
+    <p>5 servings</p>
+    <p>📍 Dadar • 1.8 km</p>
+    </div>
+    <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+</div>
+
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+        <div class="food-info">
+        <h4>Dal Tadka & Rice</h4>
+        <p>6 servings</p>
+        <p>📍 Kurla • 3 km</p>
+        </div>
+        <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+        </div>
+        
+        
+        <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+        <div class="food-info">
+        <h4>Veg Pulao</h4>
+        <p>5 servings</p>
+        <p>📍 Santacruz • 2.3 km</p>
+        </div>
+        <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+        </div>
+        
+        
+        <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1605478371310-a9f1e96b4ff4">
+        <div class="food-info">
+        <h4>Chapati & Sabzi</h4>
+        <p>10 servings</p>
+        <p>📍 Andheri • 4 km</p>
+        </div>
+        <button class="accept-btn" onclick="acceptOrder(this)">Accept</button>
+        </div>   
+    
+    
+    <div class="bottom-nav">
+    
+    <div>🏠<br>Home</div>
+    <a href="request.html">
+    <div>📦<br> Requests </div> </a>
+    <a href="pickup.html">
+    <div>🚚<br>Pickup</div></a>
+    <a href="profilengo.html">
+    <div>👤<br>Profile</div></a>
+    
+    </div>
+    </div>
+</div>
+<script>
+    function loadDonations(){
+    
+        let data = JSON.parse(localStorage.getItem("donations")) || [];
+        let container = document.getElementById("list");
+    
+        container.innerHTML = "";
+    
+        data.forEach((d, i) => {
+    
+            container.innerHTML += `
+            <div class="card">
+                <h3>${d.title}</h3>
+                <p>${d.servings} servings</p>
+                <p>${d.location}</p>
+                <p>${d.time}</p>
+                <p>${d.desc}</p>
+    
+                ${d.urgent ? '<p style="color:red;">🔥 Urgent</p>' : ''}
+    
+                <button onclick="accept(${i})">Accept</button>
+            </div>
+            `;
+        });
+    }
+    
+    function accept(i){
+    
+        let data = JSON.parse(localStorage.getItem("donations"));
+        let accepted = JSON.parse(localStorage.getItem("accepted")) || [];
+    
+        accepted.push(data[i]);
+    
+        localStorage.setItem("accepted", JSON.stringify(accepted));
+    
+        alert("Accepted ✅");
+    
+        loadDonations();
+    }
+    
+    loadDonations();
+    </script>
+            <script>
+                function acceptOrder(id, btn) {
+                
+                  fetch(`http://127.0.0.1:8000/accept/${id}`, {
+                    method: "POST"
+                  })
+                  .then(res => res.json())
+                  .then(data => {
+                    btn.innerText = "Accepted ✅";
+                    btn.style.background = "green";
+                  });
+                
+                }
+                </script>
+               
+    </body>
+    </html>

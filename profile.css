@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff4ec;
+    }
+    
+    .mobile-container{
+    width:390px;
+    max-width: 100%;
+    margin:auto;
+    min-height:100vh;
+    background:#fff4ec;
+    }
+    
+    .header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:20px;
+    font-weight:bold;
+    }
+    
+    .profile-top{
+        background:#ff7a00;
+        color:white;
+        padding:20px;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-bottom:20px;
+        }
+        
+        .avatar{
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        background:white;
+        padding:5px;
+        }
+        
+        .tag{
+        background:white;
+        color:#ff7a00;
+        padding:4px 10px;
+        border-radius:15px;
+        font-size:12px;
+        }
+        
+        .phone{
+        font-size:13px;
+        margin-top:5px;
+        }
+        
+        .section-title{
+        margin:20px 0 10px;
+        font-size:16px;
+        font-weight:600;
+        }
+        
+        .impact{
+            display:flex;
+            gap:15px;
+            margin-bottom:25px;
+            }
+            
+            .impact-box{
+            flex:1;
+            background:white;
+            padding:18px;
+            border-radius:15px;
+            box-shadow:0 6px 15px rgba(0,0,0,0.08);
+            text-align:center;
+            }
+            
+            .impact-box h2{
+            margin:0;
+            font-size:24px;
+            color:#ff7a00;
+            }
+            
+            .impact-box p{
+            margin-top:5px;
+            color:#777;
+            font-size:13px;
+            }
+            .settings{
+                margin-top:15px;
+                }
+                
+                .setting-item{
+                background:white;
+                padding:18px;
+                border-radius:14px;
+                margin-bottom:12px;
+                display:flex;
+                align-items:center;
+                gap:12px;
+                font-size:16px;
+                font-weight:500;
+                box-shadow:0 4px 12px rgba(0,0,0,0.07);
+                transition:0.2s;
+                }
+                
+                .setting-item:hover{
+                transform:scale(1.02);
+                background:#fff7f0;
+                }
+                .more-section{
+                    margin-top:25px;
+                    }
+                    
+                    .more-section .setting-item{
+                    background:#f8f8f8;
+                    }
+        
+        .logout{
+        color:red;
+        font-weight:500;
+        }
